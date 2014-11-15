@@ -1,0 +1,8 @@
+$FILENAME$
+
+Copyright (c) $YEAR$, $COPYRIGHT$.
+
+This file is part of $PROJECTNAME$.
+
+$PROJECTNAME$ is licensed under The MIT license.
+For full copyright and license information please see the LICENSE.txt file.

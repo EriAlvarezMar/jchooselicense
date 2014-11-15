@@ -1,0 +1,20 @@
+#CONFIG.props
+#Sat Nov 15 16:11:39 VET 2014
+default.copyright=Copyright <email>
+default.fileextension=java,php,h,cpp
+log.level=DEVEL
+java.vendor=Oracle Corporation
+app.description=Aplicación para agregar licencias al código fuente
+path.licensetxt=LICENSE.txt
+path.licenseheader=HEADER.txt
+default.appname=Proyecto
+app.copyright=Saúl Piña <sauljp07@gmail.com>
+app.name=JChooseLicense
+os.name=Linux
+os.arch=i386
+path.config=CONFIG.props
+os.version=3.2.0-4-686-pae
+path.licenses=licenses/
+java.version=1.7.0_65
+app.translate=translate/es_VE
+app.license=MIT
