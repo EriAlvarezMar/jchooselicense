@@ -96,9 +96,8 @@ public class License {
 
 		BufferedWriter out = new BufferedWriter(new FileWriter(source));
 		out.write(header.toString());
-		out.write("\n");
-		if (file.charAt(0) == '\n')
-			file.deleteCharAt(0);
+		if (file.charAt(0) != '\n')
+			out.write("\n");
 		out.write(file.toString());
 		out.flush();
 		out.close();
