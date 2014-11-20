@@ -14,14 +14,12 @@
 package app.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,11 +62,13 @@ public class AppViewMain extends JFrame {
 	private JComboBox<License> cmbLicense;
 	private JLabel lblYear;
 	private JTextField txtYear;
-	private JPanel pnlSouth;
-	private JLabel lblStatusBar;
 	private JLabel lblExtension;
 	private JTextField txtExtension;
 	private JButton btnSave;
+	private JLabel lblWriteLicence;
+	private JCheckBox chkWriteLicence;
+	private JLabel lblWriteHeaders;
+	private JCheckBox chkWriteHeaders;
 
 	public AppViewMain() {
 		config = UtilConfig.getInstance();
@@ -84,7 +84,7 @@ public class AppViewMain extends JFrame {
 
 	private void init() {
 		setLayout(new BorderLayout());
-		setSize(400, 300);
+		setSize(400, 370);
 		setTitle(config.get("app.name"));
 
 		menuBar = new JMenuBar();
@@ -127,6 +127,12 @@ public class AppViewMain extends JFrame {
 		lblLicense = new JLabel(translate.get("gui.license"));
 		cmbLicense = new JComboBox<License>();
 
+		lblWriteLicence = new JLabel(translate.get("gui.writelicence"));
+		chkWriteLicence = new JCheckBox();
+
+		lblWriteHeaders = new JLabel(translate.get("gui.writeheaders"));
+		chkWriteHeaders = new JCheckBox();
+
 		btnSave = new JButton(translate.get("gui.save"));
 
 		pnlCentral = new JPanel();
@@ -144,18 +150,12 @@ public class AppViewMain extends JFrame {
 		pnlCentral.add(lblExtension, "grow, height 25");
 		pnlCentral.add(txtExtension, "grow, span 2, height 25, wrap");
 		pnlCentral.add(lblLicense, "grow, height 25");
-		pnlCentral.add(cmbLicense, "grow, span 2, height 25, wrap 20");
-		pnlCentral.add(new JLabel());
-		pnlCentral.add(btnSave, "grow, span 2, height 30");
-
-		lblStatusBar = new JLabel();
-		lblStatusBar.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 9));
-		lblStatusBar.setAlignmentX(JLabel.LEFT_ALIGNMENT);
-		lblStatusBar.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-
-		pnlSouth = new JPanel(new MigLayout());
-		add(pnlSouth, BorderLayout.SOUTH);
-		pnlSouth.add(lblStatusBar, "width 100%, height 20");
+		pnlCentral.add(cmbLicense, "grow, span 2, height 25, wrap");
+		pnlCentral.add(lblWriteLicence, "grow, height 25");
+		pnlCentral.add(chkWriteLicence, "grow, span 2, height 25, wrap");
+		pnlCentral.add(lblWriteHeaders, "grow, height 25");
+		pnlCentral.add(chkWriteHeaders, "grow, span 2, height 25, wrap 20");
+		pnlCentral.add(btnSave, "grow, span 3, height 30");
 
 		menuItems.add(menuItemShowConfig);
 		menuItems.add(menuItemClose);
@@ -221,10 +221,6 @@ public class AppViewMain extends JFrame {
 		return txtYear;
 	}
 
-	public JLabel getLblStatusBar() {
-		return lblStatusBar;
-	}
-
 	public JTextField getTxtExtension() {
 		return txtExtension;
 	}
@@ -239,6 +235,14 @@ public class AppViewMain extends JFrame {
 
 	public JMenu getMenuHelp() {
 		return menuHelp;
+	}
+
+	public JCheckBox getChkWriteLicence() {
+		return chkWriteLicence;
+	}
+
+	public JCheckBox getChkWriteHeaders() {
+		return chkWriteHeaders;
 	}
 
 }

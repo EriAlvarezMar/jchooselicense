@@ -59,6 +59,9 @@ public class AppController implements ActionListener {
 		appView.getTxtYear().setText(String.format("%tY", new Date()));
 		appView.getTxtExtension().setText(config.get("default.fileextension"));
 
+		appView.getChkWriteHeaders().setSelected(Boolean.parseBoolean(config.get("default.writeheaders")));
+		appView.getChkWriteLicence().setSelected(Boolean.parseBoolean(config.get("default.writelicence")));
+
 		licenses = new ArrayList<License>();
 		cmbLicenseModel = new DefaultComboBoxModel<License>();
 
@@ -89,8 +92,11 @@ public class AppController implements ActionListener {
 			showConfig();
 		else if (source.equals(appView.getBtnSelectPath()))
 			selectPath();
-		else if (source.equals(appView.getBtnSave()))
+		else if (source.equals(appView.getBtnSave())) {
+			enable(false);
 			save();
+			enable(true);
+		}
 	}
 
 	public void editFile(File file) throws IOException {
@@ -101,11 +107,8 @@ public class AppController implements ActionListener {
 
 		String msg = String.format(translate.get("log.processfile"), file.getName());
 
-		appView.getLblStatusBar().setText(msg);
 		log.info(getClass(), msg);
-
 		license.setHeader(file, appView.getTxtName().getText(), appView.getTxtCopyright().getText(), appView.getTxtYear().getText());
-
 	}
 
 	public void findFile(File file) throws IOException {
@@ -116,7 +119,7 @@ public class AppController implements ActionListener {
 				findFile(f);
 	}
 
-	public void enableDisable(boolean e) {
+	public void enable(boolean e) {
 		appView.getTxtCopyright().setEnabled(e);
 		appView.getTxtExtension().setEnabled(e);
 		appView.getTxtName().setEnabled(e);
@@ -127,37 +130,23 @@ public class AppController implements ActionListener {
 		appView.getCmbLicense().setEnabled(e);
 		appView.getBtnSave().setEnabled(e);
 		appView.getBtnSelectPath().setEnabled(e);
+		appView.getChkWriteHeaders().setEnabled(e);
+		appView.getChkWriteLicence().setEnabled(e);
 	}
 
 	public void save() {
 		String stringPath = appView.getTxtPath().getText().trim();
+		File path = new File(stringPath);
 
 		if (stringPath.isEmpty()) {
 			String msg = translate.get("error.pathempty");
-			appView.getLblStatusBar().setText(msg);
 			log.error(getClass(), msg);
 			JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		extensions = appView.getTxtExtension().getText().split(",");
-
-		boolean allowExt = false;
-		for (String ext2 : extensions) {
-			allowExt = false;
-			for (String ext1 : allowExtensions) {
-				if (ext1.equals(ext2)) {
-					allowExt = true;
-					break;
-				}
-			}
-			if (!allowExt)
-				break;
-		}
-
-		if (!allowExt) {
-			String msg = String.format(translate.get("error.allowedextesions"), Arrays.toString(allowExtensions));
-			appView.getLblStatusBar().setText(msg);
+		if (!appView.getChkWriteHeaders().isSelected() && !appView.getChkWriteLicence().isSelected()) {
+			String msg = translate.get("error.noaction");
 			log.error(getClass(), msg);
 			JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
 			return;
@@ -165,34 +154,54 @@ public class AppController implements ActionListener {
 
 		license = (License) appView.getCmbLicense().getSelectedItem();
 
-		enableDisable(false);
-		File path = new File(stringPath);
+		if (appView.getChkWriteLicence().isSelected()) {
+			try {
+				license.copyLicence(path, appView.getTxtName().getText(), appView.getTxtCopyright().getText(), appView.getTxtYear().getText());
+				String msg = String.format(translate.get("info.savelicense"));
+				log.info(getClass(), msg);
+			} catch (IOException e) {
+				String msg = String.format(translate.get("error.savelicense"));
+				log.error(getClass(), e, msg);
+				JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		if (appView.getChkWriteHeaders().isSelected()) {
+			extensions = appView.getTxtExtension().getText().split(",");
 
-		try {
-			license.copyLicence(path, appView.getTxtName().getText(), appView.getTxtCopyright().getText(), appView.getTxtYear().getText());
-			String msg = String.format(translate.get("info.savelicense"));
-			appView.getLblStatusBar().setText(msg);
-			log.info(getClass(), msg);
-		} catch (IOException e) {
-			String msg = String.format(translate.get("error.savelicense"));
-			appView.getLblStatusBar().setText(msg);
-			log.error(getClass(), e, msg);
-			JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
+			boolean allowExt = false;
+			for (String ext2 : extensions) {
+				allowExt = false;
+				for (String ext1 : allowExtensions) {
+					if (ext1.equals(ext2)) {
+						allowExt = true;
+						break;
+					}
+				}
+				if (!allowExt)
+					break;
+			}
+
+			if (!allowExt) {
+				String msg = String.format(translate.get("error.allowedextesions"), Arrays.toString(allowExtensions));
+				log.error(getClass(), msg);
+				JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+
+			try {
+				findFile(path);
+			} catch (IOException e) {
+				String msg = String.format(translate.get("error.savelicense"));
+				log.error(getClass(), e, msg);
+				JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 		}
 
-		try {
-			findFile(path);
-		} catch (IOException e) {
-			String msg = String.format(translate.get("error.savelicense"));
-			appView.getLblStatusBar().setText(msg);
-			log.error(getClass(), e, msg);
-			JOptionPane.showMessageDialog(appView, msg, "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		enableDisable(true);
 	}
 
 	public void selectPath() {
-
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(new File("."));
 		fileChooser.setMultiSelectionEnabled(false);
@@ -204,7 +213,6 @@ public class AppController implements ActionListener {
 		if (path != null) {
 			appView.getTxtPath().setText(fileChooser.getSelectedFile().getAbsolutePath());
 		}
-
 	}
 
 	public void showAbout() {

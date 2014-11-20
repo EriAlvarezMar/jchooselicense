@@ -1,10 +1,11 @@
 #CONFIG.props
-#Sat Nov 15 16:22:41 VET 2014
+#Wed Nov 19 20:01:36 VET 2014
 default.copyright=Copyright <email>
 default.fileextension=java,php,h,cpp
 log.level=DEVEL
 java.vendor=Oracle Corporation
 app.description=Aplicación para agregar licencias al código fuente
+default.writelicence=TRUE
 path.licensetxt=LICENSE.txt
 path.licenseheader=HEADER.txt
 default.appname=Proyecto
@@ -18,3 +19,4 @@ path.licenses=licenses/
 java.version=1.7.0_65
 app.translate=translate/es_VE
 app.license=MIT
+default.writeheaders=TRUE

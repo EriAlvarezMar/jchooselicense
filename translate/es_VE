@@ -20,3 +20,6 @@ error.allowedextesions=Extensiones permitidas: %s
 log.processfile=Procesando archivo: %s
 error.savelicense=Error guardando licencia
 info.savelicense=Licencia guardada
+gui.writelicence=Escribir licencia
+gui.writeheaders=Escribir cabeceras
+error.noaction=No se ha seleccionado alguna acción 
