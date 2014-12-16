@@ -69,11 +69,12 @@ public class AppViewMain extends JFrame {
 	private JCheckBox chkWriteLicence;
 	private JLabel lblWriteHeaders;
 	private JCheckBox chkWriteHeaders;
+	private JLabel lblWriteFileName;
+	private JCheckBox chkWriteFileName;
 
 	public AppViewMain() {
 		config = UtilConfig.getInstance();
 		translate = UtilTranslate.getInstance();
-
 		menuItems = new Vector<JMenuItem>();
 		buttons = new Vector<JButton>();
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -133,6 +134,9 @@ public class AppViewMain extends JFrame {
 		lblWriteHeaders = new JLabel(translate.get("gui.writeheaders"));
 		chkWriteHeaders = new JCheckBox();
 
+		lblWriteFileName = new JLabel(translate.get("gui.writefilename"));
+		chkWriteFileName = new JCheckBox();
+
 		btnSave = new JButton(translate.get("gui.save"));
 
 		pnlCentral = new JPanel();
@@ -154,7 +158,9 @@ public class AppViewMain extends JFrame {
 		pnlCentral.add(lblWriteLicence, "grow, height 25");
 		pnlCentral.add(chkWriteLicence, "grow, span 2, height 25, wrap");
 		pnlCentral.add(lblWriteHeaders, "grow, height 25");
-		pnlCentral.add(chkWriteHeaders, "grow, span 2, height 25, wrap 20");
+		pnlCentral.add(chkWriteHeaders, "grow, span 2, height 25, wrap");
+		pnlCentral.add(lblWriteFileName, "grow, height 25");
+		pnlCentral.add(chkWriteFileName, "grow, span 2, height 25, wrap 20");
 		pnlCentral.add(btnSave, "grow, span 3, height 30");
 
 		menuItems.add(menuItemShowConfig);
@@ -243,6 +249,10 @@ public class AppViewMain extends JFrame {
 
 	public JCheckBox getChkWriteHeaders() {
 		return chkWriteHeaders;
+	}
+
+	public JCheckBox getChkWriteFileName() {
+		return chkWriteFileName;
 	}
 
 }

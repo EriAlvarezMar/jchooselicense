@@ -23,3 +23,4 @@ info.savelicense=Licencia guardada
 gui.writelicence=Escribir licencia
 gui.writeheaders=Escribir cabeceras
 error.noaction=No se ha seleccionado alguna acción 
+gui.writefilename=Incluir nombre de archivo

@@ -57,13 +57,17 @@ public class License {
 		br.close();
 	}
 
-	public void setHeader(File source, String projectName, String copyright, String year) throws IOException {
+	public void setHeader(File source, String projectName, String copyright, String year, boolean writeFileName) throws IOException {
 		String line;
 		StringBuilder header = new StringBuilder();
 		header.append("/**\n * \n");
+
+		if (writeFileName)
+			header.append(" * " + source.getName() + "\n * \n");
+
 		BufferedReader brHeader = new BufferedReader(new FileReader(new File(directory, config.get("path.licenseheader"))));
 		while ((line = brHeader.readLine()) != null) {
-			line = line.replace("$PROJECTNAME$", projectName).replace("$FILENAME$", source.getName()).replace("$COPYRIGHT$", copyright).replace("$YEAR$", year);
+			line = line.replace("$PROJECTNAME$", projectName).replace("$COPYRIGHT$", copyright).replace("$YEAR$", year);
 			header.append(" * " + line + "\n");
 		}
 		brHeader.close();
@@ -102,5 +106,4 @@ public class License {
 		out.flush();
 		out.close();
 	}
-
 }

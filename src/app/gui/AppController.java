@@ -61,6 +61,7 @@ public class AppController implements ActionListener {
 
 		appView.getChkWriteHeaders().setSelected(Boolean.parseBoolean(config.get("default.writeheaders")));
 		appView.getChkWriteLicence().setSelected(Boolean.parseBoolean(config.get("default.writelicence")));
+		appView.getChkWriteFileName().setSelected(Boolean.parseBoolean(config.get("default.writefilename")));
 
 		licenses = new ArrayList<License>();
 		cmbLicenseModel = new DefaultComboBoxModel<License>();
@@ -108,7 +109,7 @@ public class AppController implements ActionListener {
 		String msg = String.format(translate.get("log.processfile"), file.getName());
 
 		log.info(getClass(), msg);
-		license.setHeader(file, appView.getTxtName().getText(), appView.getTxtCopyright().getText(), appView.getTxtYear().getText());
+		license.setHeader(file, appView.getTxtName().getText(), appView.getTxtCopyright().getText(), appView.getTxtYear().getText(), appView.getChkWriteFileName().isSelected());
 	}
 
 	public void findFile(File file) throws IOException {
