@@ -4,7 +4,7 @@
  * This file is part of JChooseLicense.
  * 
  * JChooseLicense is licensed under The MIT License.
- * For full copyright and license information please see the LICENSE.txt file.
+ * For full copyright and license information please see the LICENSE file.
  */
 
 package jchooselicense.app;
