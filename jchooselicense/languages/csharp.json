@@ -1,0 +1,9 @@
+{
+	"name":"c#",
+	"startComment":"////",
+	"comment":"/// ",
+	"endComment":"////",
+	"extensions":[
+		"cs"
+	]
+}

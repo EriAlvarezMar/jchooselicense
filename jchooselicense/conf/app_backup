@@ -1,0 +1,9 @@
+app.trl_path=trl
+app.trl=en
+app.name=JChooseLicense
+app.lic_patch=licenses
+app.lic_config_name=config.json
+app.log_level=devel
+app.copyright=Saúl Piña <sauljp07@gmail.com>
+app.license=Under The MIT License (MIT)
+app.langs_patch=languages

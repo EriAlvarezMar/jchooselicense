@@ -1,0 +1,31 @@
+{
+	"code":"LGPL3",
+	"name":"Lesser General Public Licenses Version 3",
+	"url":"http://www.gnu.org/licenses/",
+	"body":"COPYING",
+	"header":"HEADER",
+	"parameters":[
+		{
+			"name":"Year",
+			"reference":"$YEAR$",
+			"defaultValue":"2016",
+			"value":"2016"
+		},
+		{
+			"name":"Copyright",
+			"reference":"$COPYRIGHT$",
+			"defaultValue":"<Name> <Email>",
+			"value":"<Name> <Email>"
+		},
+		{
+			"name":"Project Name",
+			"reference":"$PROJECTNAME$",
+			"defaultValue":"Name",
+			"value":"Name"
+		}
+		
+	],
+	"attachments":[
+		"COPYING.LESSER"
+	]
+}
