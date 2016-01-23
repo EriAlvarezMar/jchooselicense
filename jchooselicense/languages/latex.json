@@ -1,0 +1,9 @@
+{
+	"name":"latex",
+	"startComment":"%%",
+	"comment":"% ",
+	"endComment":"%%",
+	"extensions":[
+		"tex", "cls", "bib", "bst"
+	]
+}

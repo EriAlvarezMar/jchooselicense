@@ -1,0 +1,7 @@
+JChooseLicense
+
+Aplicación para agregar licencias de software a proyectos
+Soporte para extenciones de archivo Java, Python, C# y LaTeX
+Licencias disponibles GPL 2 y 3, LGPL 2 y 3, MIT
+Idiomas disponibles para la aplicación Inglés y Español
+Copyright (c) Saúl Piña <sauljp07@gmail.com>

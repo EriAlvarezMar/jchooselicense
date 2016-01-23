@@ -117,25 +117,26 @@ public class License extends Model {
 		out.close();
 		in.close();
 
-		for (String attached : attachments) {
-			writeAttachments(project, attached);
-		}
+		writeAttachments(project);
+
 	}
 
-	private void writeAttachments(String project, String attached) throws Exception {
-		BufferedReader in = new BufferedReader(new FileReader(new File(path, attached)));
-		BufferedWriter out = new BufferedWriter(new FileWriter(new File(project, attached)));
+	private void writeAttachments(String project) throws Exception {
+		for (String attached : attachments) {
+			BufferedReader in = new BufferedReader(new FileReader(new File(path, attached)));
+			BufferedWriter out = new BufferedWriter(new FileWriter(new File(project, attached)));
 
-		String line;
-		while ((line = in.readLine()) != null) {
-			for (Parameter param : parameters) {
-				line = line.replace(param.getReference(), param.getValue());
+			String line;
+			while ((line = in.readLine()) != null) {
+				for (Parameter param : parameters) {
+					line = line.replace(param.getReference(), param.getValue());
+				}
+				out.write(line + "\n");
 			}
-			out.write(line + "\n");
+			out.flush();
+			out.close();
+			in.close();
 		}
-		out.flush();
-		out.close();
-		in.close();
 	}
 
 	public void writeHeader(File source, Language lang, boolean writeFileName) throws Exception {
@@ -171,8 +172,6 @@ public class License extends Model {
 		String licenseEndToken = lang.getEndComment().trim();
 
 		if ((line = brFile.readLine()) != null) {
-			System.out.println(line.getBytes()[0]);
-			System.out.println(licenseStartToken.getBytes()[0]);
 			if (licenseStartToken.equals(line.trim()))
 				replace = true;
 			else

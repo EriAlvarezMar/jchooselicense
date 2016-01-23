@@ -1,17 +1,17 @@
-#/home/spina/Workspace/java/jchooselicense/conf/app
-#Sat Jan 16 22:27:12 ECT 2016
+#/home/spina/Workspace/java/jchooselicense/jchooselicense/conf/app
+#Sat Jan 23 11:13:17 ECT 2016
+app.langs_patch=languages
 os.arch=amd64
-app.trl=en
+app.trl=es
 app.license=Under The MIT License (MIT)
 java.version=1.7.0_79
 app.trl_path=trl
-config.path=/home/spina/Workspace/java/jchooselicense/conf/app
+config.path=/home/spina/Workspace/java/jchooselicense/jchooselicense/conf/app
 app.copyright=Saúl Piña <sauljp07@gmail.com>
 app.log_level=devel
 app.lic_config_name=config.json
-os.name=Linux
-os.version=4.2.8-200.fc22.x86_64
 java.vendor=Oracle Corporation
+os.version=4.2.8-200.fc22.x86_64
+os.name=Linux
 app.lic_patch=licenses
 app.name=JChooseLicense
-app.langs_patch=languages
