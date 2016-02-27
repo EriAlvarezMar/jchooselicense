@@ -1,6 +1,6 @@
 {
 	"name":"python",
-	"startComment":"'''",
+	"startComment":"# -*- encoding: utf-8 -*-\n'''",
 	"comment":"",
 	"endComment":"'''",
 	"extensions":[

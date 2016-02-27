@@ -170,19 +170,24 @@ public class License extends Model {
 
 		String licenseStartToken = lang.getStartComment().trim();
 		String licenseEndToken = lang.getEndComment().trim();
+		int countLinesStart = licenseStartToken.length() - licenseStartToken.replace("\n", "").length() + 1;
+		String startLineFiles = "";
 
-		if ((line = brFile.readLine()) != null) {
-			if (licenseStartToken.equals(line.trim()))
-				replace = true;
-			else
-				file.append(line + "\n");
+		for (int i = 0; i < countLinesStart && (line = brFile.readLine()) != null; i++) {
+			startLineFiles += line + "\n";
+		}
+
+		if (licenseStartToken.equals(startLineFiles.trim())) {
+			replace = true;
+		} else if (startLineFiles.trim() != null) {
+			file.append(startLineFiles.trim() + "\n");
 		}
 
 		while ((line = brFile.readLine()) != null) {
 			if (replace) {
 				if (licenseEndToken.equals(line.trim()))
 					replace = false;
-			} else {
+			} else if (line != null) {
 				file.append(line + "\n");
 			}
 		}
