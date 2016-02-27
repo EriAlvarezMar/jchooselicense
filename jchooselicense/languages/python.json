@@ -1,9 +1,10 @@
 {
-	"name":"python",
-	"startComment":"# -*- encoding: utf-8 -*-\n'''",
-	"comment":"",
-	"endComment":"'''",
-	"extensions":[
+	"name": "python",
+	"startComment": "# -*- encoding: utf-8 -*-\n\"\"\"",
+	"comment": "",
+	"endComment": "\"\"\"",
+	"extensions": 
+	[
 		"py"
 	]
 }

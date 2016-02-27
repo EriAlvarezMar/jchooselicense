@@ -1,9 +1,10 @@
 {
-	"name":"c#",
-	"startComment":"////",
-	"comment":"/// ",
-	"endComment":"////",
-	"extensions":[
+	"name": "c#",
+	"startComment": "////",
+	"comment": "/// ",
+	"endComment": "////",
+	"extensions": 
+	[
 		"cs"
 	]
 }
