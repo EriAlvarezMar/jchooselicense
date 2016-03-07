@@ -12,15 +12,21 @@ package jchooselicense.model;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import jchooselicense.base.Model;
 
 public class License extends Model {
 
+	public static final String CHARSET_UTF_8 = "UTF-8";
+	public static final String CHARSET_ISO_8859_1 = "ISO-8859-1";
+
 	private String code;
+	private String charset;
 	private String name;
 	private String url;
 	private String body;
@@ -28,6 +34,18 @@ public class License extends Model {
 	private ArrayList<Parameter> parameters;
 	private ArrayList<String> attachments;
 	private String path;
+
+	public License() {
+		this.charset = CHARSET_UTF_8;
+	}
+
+	public String getCharset() {
+		return charset;
+	}
+
+	public void setCharset(String charset) {
+		this.charset = charset;
+	}
 
 	public String getPath() {
 		return path;
@@ -94,7 +112,9 @@ public class License extends Model {
 	}
 
 	public String toFullString() {
-		return String.format("License [code=%s, name=%s, url=%s, body=%s, header=%s, parameters=%s, attachments=%s, path=%s]", code, name, url, body, header, parameters, attachments, path);
+		return String.format(
+				"License [code=%s, name=%s, url=%s, body=%s, header=%s, parameters=%s, attachments=%s, path=%s]", code,
+				name, url, body, header, parameters, attachments, path);
 	}
 
 	@Override
@@ -103,8 +123,10 @@ public class License extends Model {
 	}
 
 	public void writeLicence(String project) throws Exception {
-		BufferedReader in = new BufferedReader(new FileReader(new File(path, body)));
-		BufferedWriter out = new BufferedWriter(new FileWriter(new File(project, body)));
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(new FileInputStream(new File(path, body)), charset));
+		BufferedWriter out = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(project, body)), charset));
 
 		String line;
 		while ((line = in.readLine()) != null) {
@@ -123,8 +145,10 @@ public class License extends Model {
 
 	private void writeAttachments(String project) throws Exception {
 		for (String attached : attachments) {
-			BufferedReader in = new BufferedReader(new FileReader(new File(path, attached)));
-			BufferedWriter out = new BufferedWriter(new FileWriter(new File(project, attached)));
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File(path, attached)), charset));
+			BufferedWriter out = new BufferedWriter(
+					new OutputStreamWriter(new FileOutputStream(new File(project, attached)), charset));
 
 			String line;
 			while ((line = in.readLine()) != null) {
@@ -153,7 +177,8 @@ public class License extends Model {
 			header.append("\n");
 		}
 
-		BufferedReader brHeader = new BufferedReader(new FileReader(new File(path, this.header)));
+		BufferedReader brHeader = new BufferedReader(
+				new InputStreamReader(new FileInputStream(new File(path, this.header)), charset));
 		while ((line = brHeader.readLine()) != null) {
 			for (Parameter param : parameters) {
 				line = line.replace(param.getReference(), param.getValue());
@@ -164,7 +189,7 @@ public class License extends Model {
 		header.append(lang.getEndComment() + "\n");
 
 		StringBuilder file = new StringBuilder();
-		BufferedReader brFile = new BufferedReader(new FileReader(source));
+		BufferedReader brFile = new BufferedReader(new InputStreamReader(new FileInputStream(source), charset));
 
 		boolean replace = false;
 
@@ -193,7 +218,7 @@ public class License extends Model {
 		}
 		brFile.close();
 
-		BufferedWriter out = new BufferedWriter(new FileWriter(source));
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(source), charset));
 		out.write(header.toString());
 		if (file.length() > 0 && file.charAt(0) != '\n')
 			out.write("\n");

@@ -150,7 +150,7 @@ public class ViewLicenses extends View {
 
 		chkWriteLicense = new JCheckBox("", true);
 		chkWriteHeaders = new JCheckBox("", true);
-		chkWriteFileName = new JCheckBox("", true);
+		chkWriteFileName = new JCheckBox("", false);
 
 		panelConfig.add(chkWriteLicense, "grow, height 25, wrap");
 		panelConfig.add(chkWriteHeaders, "grow, height 25, wrap");
