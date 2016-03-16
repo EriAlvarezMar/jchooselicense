@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2016 Saúl Piña <sauljabin@gmail.com>.
- * 
+ *
  * This file is part of JChooseLicense.
- * 
+ *
  * JChooseLicense is licensed under The MIT License.
  * For full copyright and license information please see the LICENSE file.
  */
@@ -23,7 +23,6 @@ import java.util.Date;
 /**
  * Console and file log
  * 
- * @author Saul Piña <sauljp07@gmail.com>
  * @version 1.3
  */
 public final class AppLog {
@@ -41,7 +40,7 @@ public final class AppLog {
 
 	/**
 	 * UtilLog levels
-	 * 
+	 *
 	 * @author Saul Piña <sauljp07@gmail.com>
 	 */
 	public enum UtilLogLevel {
@@ -55,7 +54,7 @@ public final class AppLog {
 
 	/**
 	 * Get instance singleton
-	 * 
+	 *
 	 * @return UtilLog
 	 */
 	public synchronized static AppLog getInstance() {
@@ -73,7 +72,7 @@ public final class AppLog {
 
 	/**
 	 * Get date format
-	 * 
+	 *
 	 * @return Date format
 	 */
 	public String getDateFormat() {
@@ -82,7 +81,7 @@ public final class AppLog {
 
 	/**
 	 * Set date format
-	 * 
+	 *
 	 * @param dateFormat
 	 */
 	public void setDateFormat(String dateFormat) {
@@ -92,7 +91,7 @@ public final class AppLog {
 
 	/**
 	 * Get file encoding, default StandardCharsets.UTF_8
-	 * 
+	 *
 	 * @return File encoding
 	 */
 	public Charset getFileEncoding() {
@@ -101,7 +100,7 @@ public final class AppLog {
 
 	/**
 	 * Set file encoding , default StandardCharsets.UTF_8
-	 * 
+	 *
 	 * @param fileEncoding
 	 *            String file encoding
 	 */
@@ -111,7 +110,7 @@ public final class AppLog {
 
 	/**
 	 * Get directory to save log
-	 * 
+	 *
 	 * @return Path
 	 */
 	public String getPath() {
@@ -120,7 +119,7 @@ public final class AppLog {
 
 	/**
 	 * Set directory to save log
-	 * 
+	 *
 	 * @param path
 	 *            Path
 	 */
@@ -130,7 +129,7 @@ public final class AppLog {
 
 	/**
 	 * Get level
-	 * 
+	 *
 	 * @return Level
 	 */
 	public UtilLogLevel getLevel() {
@@ -140,7 +139,7 @@ public final class AppLog {
 	/**
 	 * Set level for print: UtilLogLevel.NONE, UtilLogLevel.INFO,
 	 * UtilLogLevel.WARN, UtilLogLevel.ERROR, UtilLogLevel.DEVEL
-	 * 
+	 *
 	 * @param level
 	 */
 	public void setLevel(UtilLogLevel level) {
@@ -220,7 +219,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for info level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param msg
@@ -232,7 +231,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for info level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param format
@@ -246,7 +245,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for info level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -260,7 +259,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for info level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -276,7 +275,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for error level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param msg
@@ -288,7 +287,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for error level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param format
@@ -302,7 +301,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for error level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -316,7 +315,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for error level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -332,7 +331,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for warning level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param msg
@@ -344,7 +343,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for warning level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param format
@@ -358,7 +357,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for warning level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -372,7 +371,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for warning level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -388,7 +387,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for developer level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param msg
@@ -400,7 +399,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for developer level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param format
@@ -414,7 +413,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for developer level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e
@@ -428,7 +427,7 @@ public final class AppLog {
 
 	/**
 	 * Print log for developer level
-	 * 
+	 *
 	 * @param clazz
 	 *            Class that prints the log
 	 * @param e

@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2016 Saúl Piña <sauljabin@gmail.com>.
- * 
+ *
  * This file is part of JChooseLicense.
- * 
+ *
  * JChooseLicense is licensed under The MIT License.
  * For full copyright and license information please see the LICENSE file.
  */
@@ -25,7 +25,6 @@ import java.util.Properties;
 /**
  * Load configurations
  * 
- * @author Saul Piña <sauljp07@gmail.com>
  * @version 1.0
  */
 public final class AppConfig {
@@ -44,7 +43,7 @@ public final class AppConfig {
 
 	/**
 	 * Get path to read/save
-	 * 
+	 *
 	 * @return Path
 	 */
 	public String getPath() {
@@ -53,7 +52,7 @@ public final class AppConfig {
 
 	/**
 	 * Set path to read/save
-	 * 
+	 *
 	 * @param path
 	 *            Path to read/save
 	 */
@@ -63,7 +62,7 @@ public final class AppConfig {
 
 	/**
 	 * Get file encoding, default StandardCharsets.UTF_8
-	 * 
+	 *
 	 * @return File encoding
 	 */
 	public Charset getFileEncoding() {
@@ -72,7 +71,7 @@ public final class AppConfig {
 
 	/**
 	 * Set file encoding , default StandardCharsets.UTF_8
-	 * 
+	 *
 	 * @param fileEncoding
 	 *            String file encoding name
 	 */
@@ -82,7 +81,7 @@ public final class AppConfig {
 
 	/**
 	 * Get singleton instance
-	 * 
+	 *
 	 * @return Singleton UtilConfig
 	 */
 	public synchronized static AppConfig getInstance() {
@@ -108,7 +107,7 @@ public final class AppConfig {
 
 	/**
 	 * Load configuration from file
-	 * 
+	 *
 	 * @param configPath
 	 *            Path to read configuration
 	 * @throws IOException
@@ -119,7 +118,7 @@ public final class AppConfig {
 
 	/**
 	 * Load configuration from file
-	 * 
+	 *
 	 * @param configFile
 	 *            Path to read configuration
 	 * @throws IOException
@@ -134,7 +133,7 @@ public final class AppConfig {
 
 	/**
 	 * Get the configuration value
-	 * 
+	 *
 	 * @param key
 	 *            Configuration name
 	 * @return Configuration value
@@ -145,7 +144,7 @@ public final class AppConfig {
 
 	/**
 	 * Get the configuration value
-	 * 
+	 *
 	 * @param key
 	 *            Configuration name
 	 * @param defaultReturn
@@ -161,7 +160,7 @@ public final class AppConfig {
 
 	/**
 	 * Get all the configuration names
-	 * 
+	 *
 	 * @return Keys
 	 */
 	public synchronized List<String> getKeys() {
@@ -175,7 +174,7 @@ public final class AppConfig {
 
 	/**
 	 * Set new configuration
-	 * 
+	 *
 	 * @param key
 	 *            Configuration name
 	 * @param value
@@ -187,7 +186,7 @@ public final class AppConfig {
 
 	/**
 	 * Save configuration
-	 * 
+	 *
 	 * @param configPath
 	 *            Path to save configuration
 	 * @throws IOException
@@ -203,7 +202,7 @@ public final class AppConfig {
 
 	/**
 	 * Save configuration in default path
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public synchronized void save() throws IOException {
